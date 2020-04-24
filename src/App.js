@@ -10,8 +10,8 @@ const App = () => {
         <div className="navigation">
           <h1>Lambda Eats</h1>
           <nav>
-            <Route>
-              <Link to="/">Home</Link>
+            <Route path="/">
+              <Link to="/home">Home</Link>
               <Link to="/order">Order</Link>
               <Link>Help</Link>
             </Route>
@@ -19,24 +19,29 @@ const App = () => {
         </div>
       </header>
       <section>
-        <Route path="/">
-          <div className="hero">
-            <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
-          </div>
-          <h2>Order Now!</h2>
-          <p>Special Deal Today only!</p>
-        </Route>
-        <Route path="/order">
-          <form>
-            <h2>Your Order</h2>
-            <label>Size</label>
-            <input />
-            <h2>Toppings</h2>
-            <input />
-            <label>Size</label>
-            <input />
-          </form>
-        </Route>
+          <Route path="/home">
+            <div>
+              <div className="hero">
+                <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
+              </div>
+              <div>
+                <h2>Order Now!</h2>
+                <p>Special Deal Today only!</p>
+              </div>
+            </div>
+          </Route>
+          <Route path="/order">
+            <form>
+              <h2>Your Order</h2>
+              <label>Size</label>
+              <input />
+              <h2>Toppings</h2>
+              <input />
+              <label>Size</label>
+              <input />
+            </form>
+          </Route>
+       
       </section>
       <footer></footer>
     </div>
