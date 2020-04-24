@@ -141,16 +141,19 @@ const App = () => {
             disabled={formDisabled}
             errors={formErrors}
           />
-          {orders.map((order) => {
-            return (
-              <div>
-                <h2>{order.name}</h2>
-                <p>sauce: Original</p>
-                <p>{order.size}</p>
-                <p>Special Instructions: {order.special}</p>
-              </div>
-            );
-          })}
+          <div>
+            <h2>ORDERS</h2>
+            {orders.map((order) => {
+              return (
+                <div>
+                  <h3>{order.name}</h3>
+                  <p>sauce: Original</p>
+                  <p>{order.size}</p>
+                  <p>Special Instructions: {order.special}</p>
+                </div>
+              );
+            })}
+          </div>
         </Route>
       </section>
       <footer></footer>
