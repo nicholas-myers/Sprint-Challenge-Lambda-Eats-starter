@@ -17,7 +17,8 @@ export default function Form({
         <label>Name</label>
         <input type="text" name="name" value={values.name} onChange={changeValues} />
         <label>Size</label>
-        <select value={values.size} onChange={changeValues}>
+        <select name="size" value={values.size} onChange={changeValues}>
+          <option>Choose a Size</option>
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>
@@ -32,7 +33,7 @@ export default function Form({
         <label>Onions</label>
         <input type="checkbox" name="onions" onChange={checkboxChange}/>
         <label>Special Instructions</label>
-        <input type="text" onChange={changeValues} />
+        <input type="text" name="special" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>
       </form> 
     )

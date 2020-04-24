@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Form from "./components/Form";
 import "../src/App.css";
 import * as yup from "yup";
+import axios from "axios";
 // import "../Assets/Pizza.jpg"
 
 const initialFormValues = {
@@ -17,6 +18,12 @@ const initialFormValues = {
 
 const initialFormErrors = {
   name: "",
+  size: "",
+  olives: "",
+  pepperoni: "",
+  greenbell: "",
+  onions: "",
+  special: "",
 };
 
 const formValidation = yup.object().shape({
@@ -24,6 +31,12 @@ const formValidation = yup.object().shape({
     .string()
     .min(2, "username must have at least 2 characters!")
     .required("username is required!"),
+  size: yup.string(),
+  olives: yup.string(),
+  pepperoni: yup.string(),
+  greenbell: yup.string(),
+  onions: yup.string(),
+  special: yup.string(),
 });
 
 const App = () => {
@@ -82,10 +95,14 @@ const App = () => {
       pepperoni: formValues.pepperoni,
       greenbell: formValues.greenbell,
       onions: formValues.onions,
-      special: formValues.special
+      special: formValues.special,
+    };
+
+    const postOrder = (order) => {
+      setOrders([...orders, newOrder]);
     };
     // console.log(newUser)
-    // postUser(newUser);
+    postOrder(newOrder);
     setFormValues(initialFormValues);
   };
 
@@ -124,6 +141,16 @@ const App = () => {
             disabled={formDisabled}
             errors={formErrors}
           />
+          {orders.map((order) => {
+            return (
+              <div>
+                <h2>{order.name}</h2>
+                <p>sauce: Original</p>
+                <p>{order.size}</p>
+                <p>Special Instructions: {order.special}</p>
+              </div>
+            );
+          })}
         </Route>
       </section>
       <footer></footer>
