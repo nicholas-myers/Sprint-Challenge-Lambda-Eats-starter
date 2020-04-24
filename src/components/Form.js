@@ -23,6 +23,8 @@ export default function Form({
           <option>Medium</option>
           <option>Large</option>
         </select>
+        <label>Gluten Crust</label>
+        <label className="switch"><input type="checkbox"/><span className="slider round"></span></label>
         <h2>Toppings</h2>
         <div className="toppings">
           <label>Olives</label>

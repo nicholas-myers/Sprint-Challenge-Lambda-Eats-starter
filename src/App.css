@@ -67,31 +67,24 @@ nav a {
 }
 
 nav a:hover {
-  font-size: 1.5rem;
+  padding: 1rem 2rem;
   transition: 1s;
+}
+
+.heroContainer {
+  position: relative;
+  display: inline-block;
 }
 
 .hero {
 /* z-index: 0; */
-position: relative;
+position: absolute;
+
 /* background-image: url("./Assets/Pizza.jpg")); */
 }
 
-.hero img {
-  /* position: relative; */
-border-bottom: 10px solid black;
 
-}
-.heroText {
-  position: absolute;
-  color: white;
 
-  
-  background-color: lightblue;
-}
-.heroText button {
-  display: inline-block;
-}
 
 section {
   width: 100%;
@@ -139,6 +132,67 @@ form button:hover {
   justify-content: space-around;
   width: 500px;
   margin: 3%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  margin: 3%;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(70, 0, 0);
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(230, 180, 185);
+  /* border: 1px solid white; */
+}
+
+input:focus + .slider {
+  /* box-shadow: 0 0 1px #2196F3; */
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.5rem);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 footer {

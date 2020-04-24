@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Form from "./components/Form";
 import "../src/App.css";
 import * as yup from "yup";
 import axios from "axios";
 // import "../Assets/Pizza.jpg"
+
+// const databaseUrl = "https://reqres.in/"
 
 const initialFormValues = {
   name: "",
@@ -85,6 +87,18 @@ const App = () => {
     });
   };
 
+  const postOrder = (order) => {
+    axios.post("https://reqres.in/api/orders", order)
+    .then(res => {
+      console.log(res)
+      setOrders([...orders, res.data]);
+    })
+    .catch(err => {
+      debugger
+    })  
+    
+  };
+
   const submitOrder = (event) => {
     event.preventDefault();
 
@@ -98,9 +112,7 @@ const App = () => {
       special: formValues.special,
     };
 
-    const postOrder = (order) => {
-      setOrders([...orders, newOrder]);
-    };
+    
     // console.log(newUser)
     postOrder(newOrder);
     setFormValues(initialFormValues);
@@ -115,20 +127,20 @@ const App = () => {
             <Route path="/">
               <Link to="/home">Home</Link>
               <Link to="/pizza">Order</Link>
-              <Link>Help</Link>
+              <Link to="/help">Help</Link>
             </Route>
           </nav>
         </div>
       </header>
       <section>
         <Route path="/home">
-          <div>
+          <div class="heroContainer">
+          <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
             <div className="hero">
-              <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
-            </div>
-            <div>
+              
               <h2>Order Now!</h2>
               <p>Special Deal Today only!</p>
+          
             </div>
           </div>
         </Route>
