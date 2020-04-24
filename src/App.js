@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import Form from "./components/Form"
+import Form from "./components/Form";
 import "../src/App.css";
 import * as yup from "yup";
 // import "../Assets/Pizza.jpg"
@@ -65,6 +65,30 @@ const App = () => {
     });
   }, [formValues]);
 
+  const checkboxChange = (event) => {
+    setFormValues({
+      ...formValues,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const submitOrder = (event) => {
+    event.preventDefault();
+
+    const newOrder = {
+      name: formValues.name,
+      size: formValues.email,
+      olives: formValues.olives,
+      pepperoni: formValues.pepperoni,
+      greenbell: formValues.greenbell,
+      onions: formValues.onions,
+      special: formValues.special
+    };
+    // console.log(newUser)
+    // postUser(newUser);
+    setFormValues(initialFormValues);
+  };
+
   return (
     <div className="container">
       <header>
@@ -92,13 +116,13 @@ const App = () => {
           </div>
         </Route>
         <Route path="/pizza">
-          <Form 
-          values={formValues}
-          changeValues={changeValues}
-          // checkboxChange={checkboxChange}
-          // submitUser={submitUser}
-          disabled={formDisabled}
-          errors={formErrors}
+          <Form
+            values={formValues}
+            changeValues={changeValues}
+            checkboxChange={checkboxChange}
+            submitOrder={submitOrder}
+            disabled={formDisabled}
+            errors={formErrors}
           />
         </Route>
       </section>
