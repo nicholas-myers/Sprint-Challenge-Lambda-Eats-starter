@@ -101,6 +101,16 @@ section {
   flex-flow: column;
 }
 
+form option {
+  color: black;
+}
+form select {
+  color: black;
+}
+form button {
+  color: black;
+}
+
 footer {
   width: 100%;
   display: flex;
