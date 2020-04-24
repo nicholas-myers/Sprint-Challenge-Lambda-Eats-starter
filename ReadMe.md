@@ -45,7 +45,7 @@ Follow these steps to set up and work on your project:
 
 Your MVP should include, at a minimum, the following components.
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [ ] A form with a "/pizza" route
 - [ ] A name text input field
 - [ ] Validation for name - name must be at least 2 characters
