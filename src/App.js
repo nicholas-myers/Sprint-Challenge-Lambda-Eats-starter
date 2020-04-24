@@ -1,42 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import Form from "./components/Form"
 import "../src/App.css";
-import * as yup from "yup"
+import * as yup from "yup";
 // import "../Assets/Pizza.jpg"
 
-const App = () => {
+const initialFormValues = {
+  name: "",
+  size: "",
+  olives: false,
+  pepperoni: false,
+  greenbell: false,
+  onions: false,
+  special: "",
+};
 
-  const initialFormValues = {
-    name: "",
-    size: "",
-    olives: "",
-    pepperoni: "",
-  };
-  
-  const initialFormErrors = {
-    username: "",
-    email: "",
-    password: "",
-    terms: "",
-  };
-  
-  const formValidation = yup.object().shape({
-    name: yup
-      .string()
-      .min(3, "username must have at least 3 characters!")
-      .required("username is required!"),
-    email: yup
-      .string()
-      .email("a VALID email is required")
-      .required("email is required"),
-    password: yup
+const initialFormErrors = {
+  name: "",
+};
+
+const formValidation = yup.object().shape({
+  name: yup
     .string()
-    .matches(/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])/, "Password must contain one lowercase letter, one uppercase letter and a number")
-    .required("password is required"),
-    terms: yup
-      .boolean()
-      .oneOf([true], "terms are required"),
-  });
+    .min(2, "username must have at least 2 characters!")
+    .required("username is required!"),
+});
+
+const App = () => {
+  const [orders, setOrders] = useState([]);
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formDisabled, setFormDisabled] = useState(true);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+
+  const changeValues = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    yup
+      .reach(formValidation, name)
+      .validate(value)
+      .then((valid) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        // dangit, does not validate :(
+        // SET THE ERROR IN THE RIGHT PLACE
+        console.log(err);
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    formValidation.isValid(formValues).then((valid) => {
+      setFormDisabled(!valid);
+    });
+  }, [formValues]);
 
   return (
     <div className="container">
@@ -53,43 +80,27 @@ const App = () => {
         </div>
       </header>
       <section>
-          <Route path="/home">
-            <div>
-              <div className="hero">
-                <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
-              </div>
-              <div>
-                <h2>Order Now!</h2>
-                <p>Special Deal Today only!</p>
-              </div>
+        <Route path="/home">
+          <div>
+            <div className="hero">
+              <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
             </div>
-          </Route>
-          <Route path="/pizza">
-            <form>
-              <h2>Your Order</h2>
-              <label>Name</label>
-              <input type="text" />
-              <label>Size</label>
-              <select>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
-              <h2>Toppings</h2>
-              <label>Olives</label>
-              <input type="checkbox"/>
-              <label>Pepperoni</label>
-              <input type="checkbox"/>
-              <label>Greenbell Peppers</label>
-              <input type="checkbox"/>
-              <label>Onions</label>
-              <input type="checkbox" />
-              <label>Special Instructions</label>
-              <input type="text" />
-              <button>Place Order</button>
-            </form>
-          </Route>
-       
+            <div>
+              <h2>Order Now!</h2>
+              <p>Special Deal Today only!</p>
+            </div>
+          </div>
+        </Route>
+        <Route path="/pizza">
+          <Form 
+          values={formValues}
+          changeValues={changeValues}
+          // checkboxChange={checkboxChange}
+          // submitUser={submitUser}
+          disabled={formDisabled}
+          errors={formErrors}
+          />
+        </Route>
       </section>
       <footer></footer>
     </div>

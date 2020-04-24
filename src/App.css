@@ -101,6 +101,9 @@ section {
   flex-flow: column;
 }
 
+form input {
+  color: black;
+}
 form option {
   color: black;
 }
