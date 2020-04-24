@@ -15,7 +15,7 @@ export default function Form({
             {errors.name}
         </div>
         <label>Name</label>
-        <input type="text" onChange={changeValues} />
+        <input type="text" name="name" value={values.name} onChange={changeValues} />
         <label>Size</label>
         <select onChange={changeValues}>
           <option>Small</option>
