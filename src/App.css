@@ -17,7 +17,7 @@ a {
 }
 
 #root {
-  width: 100%;
+  /* width: 100%; */
 }
 .container {
   width: 100%;
@@ -48,17 +48,19 @@ header {
 
 h1 {
   margin-left: 3%;
+  width: 40%;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  width: 60%;
 }
 
 nav a {
   /* color: white; */
   background-color: white;
+  /* width: 10%; */
   color: red;
   padding: 1rem;
   font-weight: bold;
@@ -67,20 +69,30 @@ nav a {
 }
 
 nav a:hover {
+  /* width: 20%; */
   padding: 1rem 2rem;
   transition: 1s;
 }
 
 .heroContainer {
-  position: relative;
-  display: inline-block;
+  /* position: relative; */
+  width: 100%;
+}
+
+.heroContainer img {
+  border-bottom: 10px solid black;
+  position: fixed;
+  width: 100%;
 }
 
 .hero {
-/* z-index: 0; */
 position: absolute;
-
-/* background-image: url("./Assets/Pizza.jpg")); */
+bottom: 5rem;
+left: 55rem;
+border: 1px solid white;
+padding: 1rem;
+border-radius: 1rem;
+background-color: red;
 }
 
 

@@ -137,22 +137,31 @@ const App = () => {
           <div class="heroContainer">
           <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
             <div className="hero">
-              
               <h2>Order Now!</h2>
               <p>Special Deal Today only!</p>
-          
             </div>
           </div>
         </Route>
         <Route path="/pizza">
-          <Form
-            values={formValues}
-            changeValues={changeValues}
-            checkboxChange={checkboxChange}
-            submitOrder={submitOrder}
-            disabled={formDisabled}
-            errors={formErrors}
-          />
+          <div className="modal fade">
+            <div className="modal-content">
+              <div className="modal-header">
+              <h2>Your Order</h2>
+              <button className="close">&times;</button>
+              </div>
+              <div className="modal-body">
+                <Form
+                  values={formValues}
+                  changeValues={changeValues}
+                  checkboxChange={checkboxChange}
+                  submitOrder={submitOrder}
+                  disabled={formDisabled}
+                  errors={formErrors}
+                />
+              </div>
+              <div className="modal-footer"><button>Close</button></div>
+            </div>
+          </div>
           <div>
             <h2>ORDERS</h2>
             {orders.map((order) => {

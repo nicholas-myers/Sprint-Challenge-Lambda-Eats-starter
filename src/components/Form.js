@@ -10,7 +10,6 @@ export default function Form({
   }) {
     return (
         <form>
-        <h2>Your Order</h2>
         <div className="errors">
             {errors.name}
         </div>
