@@ -24,14 +24,16 @@ export default function Form({
           <option>Large</option>
         </select>
         <h2>Toppings</h2>
-        <label>Olives</label>
-        <input type="checkbox" name="olives" onChange={checkboxChange} />
-        <label>Pepperoni</label>
-        <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
-        <label>Greenbell Peppers</label>
-        <input type="checkbox" name="greenbell" onChange={checkboxChange} />
-        <label>Onions</label>
-        <input type="checkbox" name="onions" onChange={checkboxChange}/>
+        <div className="toppings">
+          <label>Olives</label>
+          <input type="checkbox" name="olives" onChange={checkboxChange} />
+          <label>Pepperoni</label>
+          <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
+          <label>Greenbell Peppers</label>
+          <input type="checkbox" name="greenbell" onChange={checkboxChange} />
+          <label>Onions</label>
+          <input type="checkbox" name="onions" onChange={checkboxChange}/>
+        </div>
         <label>Special Instructions</label>
         <input type="text" name="special" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>

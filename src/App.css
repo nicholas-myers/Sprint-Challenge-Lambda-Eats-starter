@@ -101,17 +101,44 @@ section {
   flex-flow: column;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
 form input {
   color: black;
+  margin: 3%;
 }
 form option {
   color: black;
 }
 form select {
   color: black;
+  margin: 3%;
 }
 form button {
   color: black;
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  color: red;
+  border: none;
+}
+
+form button:hover {
+  padding: 1.5rem;
+  transition: 1s;
+}
+
+.toppings {
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+  margin: 3%;
 }
 
 footer {
